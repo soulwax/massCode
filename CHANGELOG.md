@@ -1,13 +1,11 @@
 # [4.5.1](https://github.com/massCodeIO/massCode/compare/v4.5.0...v4.5.1) (2026-03-06)
 
-
 ### Bug Fixes
 
 * **db:** fix `reloadDB` not re-registering `unicode_lower` function
 * **db:** fix race condition in `reloadDB` by opening new connection before closing old
 * **ipc:** fix `db:relaod` typo in IPC channel name
 * **api:** add error handling for duplicate tag creation in tags route
-
 
 ### Security
 
@@ -20,8 +18,6 @@
 * **ipc:** add path traversal protection on all path-accepting IPC handlers
 * **ipc:** validate `fileName` in asset upload handler against path traversal
 * **utils:** add allowlist validation to `importEsm` dynamic module loader
-
-
 
 # [4.4.0](https://github.com/massCodeIO/massCode/compare/v4.3.0...v4.4.0) (2025-12-19)
 
