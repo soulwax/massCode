@@ -13,7 +13,9 @@ import { store } from './store'
 import { checkForUpdates } from './updates'
 import { log } from './utils'
 
-process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true' // Отключаем security warnings
+if (process.env.NODE_ENV === 'development') {
+  process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
+}
 
 const isDev = process.env.NODE_ENV === 'development'
 const gotTheLock = app.requestSingleInstanceLock()
@@ -72,8 +74,9 @@ function createWindow() {
     titleBarStyle: process.platform === 'darwin' ? 'hidden' : 'default',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true,
-      webSecurity: false,
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: false,
     },
   })
 

@@ -153,25 +153,32 @@ export function useDB() {
 
 export function reloadDB() {
   try {
-    // Закрываем текущую базу данных, если она открыта
-    if (db) {
-      db.close()
-      db = null
-      // eslint-disable-next-line no-console
-      console.log('Current database has been closed')
-    }
-
     // Определяем путь к новой базе данных
     const dbPath = `${store.preferences.get('storagePath')}/${DB_NAME}`
 
-    // Создаем новое соединение с базой данных
-    db = new Database(dbPath, {
+    // Создаем новое соединение до закрытия старого (избегаем race condition)
+    const newDb = new Database(dbPath, {
       // eslint-disable-next-line no-console
       verbose: isDev ? console.log : undefined,
     })
 
-    db.pragma('journal_mode = WAL')
-    db.pragma('foreign_keys = ON')
+    newDb.pragma('journal_mode = WAL')
+    newDb.pragma('foreign_keys = ON')
+
+    newDb.function('unicode_lower', (str: unknown) => {
+      if (typeof str !== 'string')
+        return str
+      return str.toLowerCase()
+    })
+
+    // Закрываем текущую базу данных после успешного открытия новой
+    if (db) {
+      db.close()
+      // eslint-disable-next-line no-console
+      console.log('Current database has been closed')
+    }
+
+    db = newDb
 
     // eslint-disable-next-line no-console
     console.log(`Database successfully reloaded: ${dbPath}`)

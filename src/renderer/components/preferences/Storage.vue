@@ -144,7 +144,7 @@ async function openStorage() {
 
   if (result) {
     try {
-      await ipc.invoke('db:relaod', result)
+      await ipc.invoke('db:reload', result)
       storagePath.value = result
       await getSnippetsCounts()
       sonner({ message: 'Database successfully loaded', type: 'success' })

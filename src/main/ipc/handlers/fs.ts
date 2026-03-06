@@ -14,9 +14,13 @@ export function registerFsHandlers() {
 
     return new Promise((resolve, reject) => {
       try {
+        if (typeof fileName !== 'string' || fileName.includes('..')) {
+          throw new Error('Invalid file name')
+        }
+
         const assetsPath = join(storagePath, ASSETS_DIR)
 
-        const { ext } = parse(fileName)
+        const { ext } = parse(parse(fileName).base)
         const name = `${nanoid()}${ext}`
         const dest = join(assetsPath, name)
 

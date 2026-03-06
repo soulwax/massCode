@@ -1,5 +1,29 @@
-# [4.4.0](https://github.com/massCodeIO/massCode/compare/v4.3.0...v4.4.0) (2025-12-19)
+# [4.5.1](https://github.com/massCodeIO/massCode/compare/v4.5.0...v4.5.1) (2026-03-06)
 
+
+### Bug Fixes
+
+* **db:** fix `reloadDB` not re-registering `unicode_lower` function
+* **db:** fix race condition in `reloadDB` by opening new connection before closing old
+* **ipc:** fix `db:relaod` typo in IPC channel name
+* **api:** add error handling for duplicate tag creation in tags route
+
+
+### Security
+
+* **main:** set `nodeIntegration: false` and `contextIsolation: true` in BrowserWindow
+* **main:** remove `webSecurity: false` from BrowserWindow preferences
+* **main:** only suppress security warnings in development mode
+* **preload:** remove unused raw SQL query passthrough from preload bridge
+* **api:** restrict CORS origin to localhost and 127.0.0.1 only
+* **ipc:** validate URL protocol in `shell.openExternal` (allow http/https only)
+* **ipc:** add path traversal protection on all path-accepting IPC handlers
+* **ipc:** validate `fileName` in asset upload handler against path traversal
+* **utils:** add allowlist validation to `importEsm` dynamic module loader
+
+
+
+# [4.4.0](https://github.com/massCodeIO/massCode/compare/v4.3.0...v4.4.0) (2025-12-19)
 
 ### Bug Fixes
 
@@ -7,22 +31,17 @@
 * **elysia:** prevent DB hangs during saves ([#643](https://github.com/massCodeIO/massCode/issues/643)) ([f6583b7](https://github.com/massCodeIO/massCode/commit/f6583b7cb2d4555b008820a9121bd46808955f09))
 * **i18n:** fix Czech translations ([#651](https://github.com/massCodeIO/massCode/issues/651)) ([55367e2](https://github.com/massCodeIO/massCode/commit/55367e2334075d559b12c92d2e12c4e9ea8aa49f))
 
-
 ### Features
 
 * **devtools:** add JSON generator ([#644](https://github.com/massCodeIO/massCode/issues/644)) ([630cf86](https://github.com/massCodeIO/massCode/commit/630cf8629a8d06cc16e7980b8f562bc778851033))
 * **devtools:** add Lorem Ipsum generator ([#645](https://github.com/massCodeIO/massCode/issues/645)) ([332362a](https://github.com/massCodeIO/massCode/commit/332362ae73c4338f00f99715f4be3173a39d2615))
 * **devtools:** add notifications for copy to clipboard ([#646](https://github.com/massCodeIO/massCode/issues/646)) ([00755ba](https://github.com/massCodeIO/massCode/commit/00755ba5aab109ee151458d062cae6462e14a101))
 
-
-
 # [4.3.0](https://github.com/massCodeIO/massCode/compare/v4.2.2...v4.3.0) (2025-11-26)
-
 
 ### Bug Fixes
 
 * **folders:** ensure context and toolbar folder creation respect parent ([#640](https://github.com/massCodeIO/massCode/issues/640)) ([b2877c2](https://github.com/massCodeIO/massCode/commit/b2877c29994f4c227da967e801dc13d3731aeba0))
-
 
 ### Features
 
@@ -30,24 +49,16 @@
 * **folders:** add multi-selection ([#641](https://github.com/massCodeIO/massCode/issues/641)) ([daef94f](https://github.com/massCodeIO/massCode/commit/daef94f718fd7ec9611f8c21a618c8a33f833feb))
 * **preferences:** add api port to preference option ([#631](https://github.com/massCodeIO/massCode/issues/631)) ([d542824](https://github.com/massCodeIO/massCode/commit/d542824361becdcfcd7bd980adff8a7f8f0354ce))
 
-
-
 ## [4.2.2](https://github.com/massCodeIO/massCode/compare/v4.2.1...v4.2.2) (2025-10-29)
-
 
 ### Bug Fixes
 
 * **db:** ensure directory exists before accessing the db ([#628](https://github.com/massCodeIO/massCode/issues/628)) ([d20bd9a](https://github.com/massCodeIO/massCode/commit/d20bd9a2aa44e58d36abd019936761afeb439766))
 * **editor:** jumping scroll when editing ([#629](https://github.com/massCodeIO/massCode/issues/629)) ([ee7e384](https://github.com/massCodeIO/massCode/commit/ee7e38458c541c455b74203ec6a59749090bd758))
 
-
-
 ## [4.2.1](https://github.com/massCodeIO/massCode/compare/v4.2.0...v4.2.1) (2025-10-28)
 
-
-
 # [4.2.0](https://github.com/massCodeIO/massCode/compare/v4.1.0...v4.2.0) (2025-10-08)
-
 
 ### Bug Fixes
 
@@ -58,102 +69,72 @@
 * **snippets:** use default folder language for fragments [#611](https://github.com/massCodeIO/massCode/issues/611) ([#612](https://github.com/massCodeIO/massCode/issues/612)) ([4c52a5e](https://github.com/massCodeIO/massCode/commit/4c52a5e4a6c607dbb8009dd1c660f964a474e3a0))
 * update entitlements and enable hardened runtime for macOS builds ([d350977](https://github.com/massCodeIO/massCode/commit/d350977b02c158789b887f7cf54981310c738bd4))
 
-
 ### Features
 
 * add show/hide sidebar toggle ([#610](https://github.com/massCodeIO/massCode/issues/610)) ([64cc14f](https://github.com/massCodeIO/massCode/commit/64cc14f803ed27490c8cfe087ccb3c3d9fd523ee))
 
-
-
 # [4.1.0](https://github.com/massCodeIO/massCode/compare/v4.0.4...v4.1.0) (2025-10-03)
-
 
 ### Bug Fixes
 
 * add help menu ([a27d605](https://github.com/massCodeIO/massCode/commit/a27d6059057b7adb10ccafbe78ba2b353efe657f))
 * set folder custom icon ([#607](https://github.com/massCodeIO/massCode/issues/607)) ([505a8a0](https://github.com/massCodeIO/massCode/commit/505a8a0e735979ebbd887280a5017bc19a491681))
 
-
 ### Features
 
 * add json visualizer ([#609](https://github.com/massCodeIO/massCode/issues/609)) ([afce45c](https://github.com/massCodeIO/massCode/commit/afce45c3e131e402ae3e180d8db57504b444bf19))
 * **editor:** add highlighting for search terms ([#606](https://github.com/massCodeIO/massCode/issues/606)) ([48b7f56](https://github.com/massCodeIO/massCode/commit/48b7f56b4cc45e14664d9521e100ad2c265e5e38))
 
-
-
 ## [4.0.4](https://github.com/massCodeIO/massCode/compare/v4.0.3...v4.0.4) (2025-09-30)
-
 
 ### Bug Fixes
 
 * **editor:** vertical scrolling [#603](https://github.com/massCodeIO/massCode/issues/603) ([#604](https://github.com/massCodeIO/massCode/issues/604)) ([dc75eb0](https://github.com/massCodeIO/massCode/commit/dc75eb0f1ce5a811e1b0eb4ff549b4193436badb))
 
-
-
 ## [4.0.3](https://github.com/massCodeIO/massCode/compare/v4.0.2...v4.0.3) (2025-09-30)
-
 
 ### Bug Fixes
 
 * **db:** add SQLite file validation and backup for non-SQLite file [#592](https://github.com/massCodeIO/massCode/issues/592) ([#601](https://github.com/massCodeIO/massCode/issues/601)) ([1951d6a](https://github.com/massCodeIO/massCode/commit/1951d6a75ed894550cd25dc74137bda7cd6c909f))
 
-
-
 ## [4.0.2](https://github.com/massCodeIO/massCode/compare/v4.0.1...v4.0.2) (2025-09-29)
-
 
 ### Bug Fixes
 
 * **db:** check tables, set default values during migration [#581](https://github.com/massCodeIO/massCode/issues/581) ([#599](https://github.com/massCodeIO/massCode/issues/599)) ([ee52846](https://github.com/massCodeIO/massCode/commit/ee52846c0489b550b4f4c227ecc3f14543008cc6))
 * **menu:** update preview code shortcut to include Alt modifier ([de92898](https://github.com/massCodeIO/massCode/commit/de92898092914484cbf16ce1110b0c93a0ef9e17))
 
-
-
 ## [4.0.1](https://github.com/massCodeIO/massCode/compare/v4.0.0...v4.0.1) (2025-09-29)
-
 
 ### Bug Fixes
 
 * **editor:** line number overlapping [#594](https://github.com/massCodeIO/massCode/issues/594) ([#596](https://github.com/massCodeIO/massCode/issues/596)) ([7641421](https://github.com/massCodeIO/massCode/commit/7641421269cfc35c0e9cd4a0ed4a6b58358f8952))
 * **menu:** double window menu ([#595](https://github.com/massCodeIO/massCode/issues/595)) ([c5dc66c](https://github.com/massCodeIO/massCode/commit/c5dc66cf842d88162624a064dc78f229f7dd1769)), closes [#593](https://github.com/massCodeIO/massCode/issues/593)
 
-
-
 # [4.0.0](https://github.com/massCodeIO/massCode/compare/v3.12.1...v4.0.0) (2025-09-27)
-
 
 ### Features
 
 * v4 ([#590](https://github.com/massCodeIO/massCode/issues/590)) ([d50d939](https://github.com/massCodeIO/massCode/commit/d50d9391b395380961ae3e1e5d27cc66c583cf35)), closes [#504](https://github.com/massCodeIO/massCode/issues/504) [#505](https://github.com/massCodeIO/massCode/issues/505) [#506](https://github.com/massCodeIO/massCode/issues/506) [#508](https://github.com/massCodeIO/massCode/issues/508) [#509](https://github.com/massCodeIO/massCode/issues/509) [#511](https://github.com/massCodeIO/massCode/issues/511) [#513](https://github.com/massCodeIO/massCode/issues/513) [#514](https://github.com/massCodeIO/massCode/issues/514) [#515](https://github.com/massCodeIO/massCode/issues/515) [#517](https://github.com/massCodeIO/massCode/issues/517) [#518](https://github.com/massCodeIO/massCode/issues/518) [#519](https://github.com/massCodeIO/massCode/issues/519) [#520](https://github.com/massCodeIO/massCode/issues/520) [#521](https://github.com/massCodeIO/massCode/issues/521) [#522](https://github.com/massCodeIO/massCode/issues/522) [#523](https://github.com/massCodeIO/massCode/issues/523) [#524](https://github.com/massCodeIO/massCode/issues/524) [#525](https://github.com/massCodeIO/massCode/issues/525) [#527](https://github.com/massCodeIO/massCode/issues/527) [#528](https://github.com/massCodeIO/massCode/issues/528) [#529](https://github.com/massCodeIO/massCode/issues/529) [#530](https://github.com/massCodeIO/massCode/issues/530)
 
-
-
 ## [3.12.1](https://github.com/massCodeIO/massCode/compare/v3.12.0...v3.12.1) (2025-06-13)
-
 
 ### Features
 
 * check only v3 & handle github rate limit ([30d0987](https://github.com/massCodeIO/massCode/commit/30d0987ccf0b895486e1d1377ef7df1450df3e66))
 
-
-
 # [3.12.0](https://github.com/massCodeIO/massCode/compare/v3.11.0...v3.12.0) (2025-02-10)
-
 
 ### Bug Fixes
 
 * **search:** delete marks by reset search ([#500](https://github.com/massCodeIO/massCode/issues/500)) ([2142bd9](https://github.com/massCodeIO/massCode/commit/2142bd91b794a1a319eb682f55d51318b14977d5))
 * **snippets:** truncate name ([#501](https://github.com/massCodeIO/massCode/issues/501)) ([54be51b](https://github.com/massCodeIO/massCode/commit/54be51bd188e0a385d83c751a176a6f808b1c8ed))
 
-
 ### Features
 
 * add window menu with minimize option ([#499](https://github.com/massCodeIO/massCode/issues/499)) ([2f013d1](https://github.com/massCodeIO/massCode/commit/2f013d18e6067fbef2ba213b46be0088c5794f67)), closes [#498](https://github.com/massCodeIO/massCode/issues/498)
 
-
-
 # [3.11.0](https://github.com/massCodeIO/massCode/compare/v3.10.0...v3.11.0) (2024-02-19)
-
 
 ### Features
 
@@ -163,40 +144,29 @@
 * **i18n:** add Persian locales ([a32dc0f](https://github.com/massCodeIO/massCode/commit/a32dc0ff8a187b4eb80971c15082e848ed4d5b23))
 * **i18n:** add Polish locales ([cd44fb4](https://github.com/massCodeIO/massCode/commit/cd44fb4d87ff873d6483c1eaeff3f45f5a9a287f))
 
-
-
 # [3.10.0](https://github.com/massCodeIO/massCode/compare/v3.9.0...v3.10.0) (2023-10-12)
-
 
 ### Bug Fixes
 
 * **snippets:** delete fragment ([8b362a0](https://github.com/massCodeIO/massCode/commit/8b362a00c1dc61b6e415dfa37257c9a83b3d37d8))
-
 
 ### Features
 
 * add mindmap ([#419](https://github.com/massCodeIO/massCode/issues/419)) ([238388d](https://github.com/massCodeIO/massCode/commit/238388de5bd3288121415a3860e8818036e96fcc))
 * **i18n:** add French locales ([#417](https://github.com/massCodeIO/massCode/issues/417)) ([5b27fda](https://github.com/massCodeIO/massCode/commit/5b27fdad3180a43177a2b047afe221114efe39f2))
 
-
-
 # [3.9.0](https://github.com/massCodeIO/massCode/compare/v3.8.0...v3.9.0) (2023-10-05)
-
 
 ### Bug Fixes
 
 * devtools menu in win [#415](https://github.com/massCodeIO/massCode/issues/415) ([#416](https://github.com/massCodeIO/massCode/issues/416)) ([a8909e4](https://github.com/massCodeIO/massCode/commit/a8909e475dafb4ff876d438e185f61ae9baf4510))
-
 
 ### Features
 
 * **i18n:** add new Czech translations ([#411](https://github.com/massCodeIO/massCode/issues/411)) ([e7e0cdc](https://github.com/massCodeIO/massCode/commit/e7e0cdcaca4718ffe828ff7ae9119895cabb79bc))
 * **i18n:** add Turkish locales ([#412](https://github.com/massCodeIO/massCode/issues/412)) ([bc6da09](https://github.com/massCodeIO/massCode/commit/bc6da09021d95eeb9ba35f2a5373e464b155df88))
 
-
-
 # [3.8.0](https://github.com/massCodeIO/massCode/compare/v3.7.0...v3.8.0) (2023-09-29)
-
 
 ### Features
 
@@ -204,16 +174,12 @@
 * add reload db ([#408](https://github.com/massCodeIO/massCode/issues/408)) ([d6ff713](https://github.com/massCodeIO/massCode/commit/d6ff71324d478e3e2f6590a3ae01ed30feb43877))
 * **icons:** add DigitalOcean, Moodle and Oracle icons ([#388](https://github.com/massCodeIO/massCode/issues/388)) ([864e2f6](https://github.com/massCodeIO/massCode/commit/864e2f6ff42c79ac99c63d84e470a0beb1aab362))
 
-
-
 # [3.7.0](https://github.com/massCodeIO/massCode/compare/v3.6.0...v3.7.0) (2023-06-14)
-
 
 ### Bug Fixes
 
 * **snippets:** multiple select ([#373](https://github.com/massCodeIO/massCode/issues/373)) ([63c90e9](https://github.com/massCodeIO/massCode/commit/63c90e9b9c29f678f2236a5897f337eef385320e))
 * **snippets:** remove prev characters by typing name [#347](https://github.com/massCodeIO/massCode/issues/347) ([#351](https://github.com/massCodeIO/massCode/issues/351)) ([ddc31e7](https://github.com/massCodeIO/massCode/commit/ddc31e7b5d792aafc531b95c37dfc738571ca509))
-
 
 ### Features
 
@@ -221,17 +187,13 @@
 * hide subfolder snippets ([#371](https://github.com/massCodeIO/massCode/issues/371)) ([e2c8d4f](https://github.com/massCodeIO/massCode/commit/e2c8d4f08294998b195a397fe12a6dff3572e46c))
 * **snippets:** add compact mode ([#372](https://github.com/massCodeIO/massCode/issues/372)) ([84b39d1](https://github.com/massCodeIO/massCode/commit/84b39d1d4caae305d566290614492b298330cd51))
 
-
-
 # [3.6.0](https://github.com/massCodeIO/massCode/compare/v3.5.0...v3.6.0) (2023-02-22)
-
 
 ### Bug Fixes
 
 * **main:** blinking context menu ([#345](https://github.com/massCodeIO/massCode/issues/345)) ([23f57c5](https://github.com/massCodeIO/massCode/commit/23f57c5fabb7f1273ccb6a8b85419a9a808458f3))
 * **snippets:** invalid prettier es6 option ([#323](https://github.com/massCodeIO/massCode/issues/323)) ([08e5123](https://github.com/massCodeIO/massCode/commit/08e512381601faa60c4aad590ca4e4c789e64e19))
 * **snippets:** wrapping long lines in screenshot ([#326](https://github.com/massCodeIO/massCode/issues/326)) ([891b548](https://github.com/massCodeIO/massCode/commit/891b548c021c7f8817e28379cd86f77d23171b40))
-
 
 ### Features
 
@@ -241,16 +203,12 @@
 * **i18n:** add Romanian locales ([#334](https://github.com/massCodeIO/massCode/issues/334)) ([9f55ff1](https://github.com/massCodeIO/massCode/commit/9f55ff1ec219c81281c30e6733407230d6a30b44))
 * **snippets:** copy screenshot to clipboard ([#327](https://github.com/massCodeIO/massCode/issues/327)) ([f06b084](https://github.com/massCodeIO/massCode/commit/f06b0842b14502bb4e2f9882ed5ed79625652043))
 
-
-
 # [3.5.0](https://github.com/massCodeIO/massCode/compare/v3.4.1...v3.5.0) (2023-01-07)
-
 
 ### Bug Fixes
 
 * **snippets:** export to html [#309](https://github.com/massCodeIO/massCode/issues/309) ([#320](https://github.com/massCodeIO/massCode/issues/320)) ([2f3bada](https://github.com/massCodeIO/massCode/commit/2f3badaf78378c68a7f667edb26a8a5039d282a9))
 * **snippets:** use 'dom-to-image' instead 'html2canvas' [#297](https://github.com/massCodeIO/massCode/issues/297) ([#317](https://github.com/massCodeIO/massCode/issues/317)) ([2ba53ac](https://github.com/massCodeIO/massCode/commit/2ba53ac1408dc083fcbbeccd6010fa93e1cbe6a9))
-
 
 ### Features
 
@@ -259,34 +217,24 @@
 * **snippets:** save screenshot as svg ([#318](https://github.com/massCodeIO/massCode/issues/318)) ([4cf24c9](https://github.com/massCodeIO/massCode/commit/4cf24c9ba49931ac36e18c1e9cdc407639e4d709))
 * **snippets:** use codemirror for screenshot ([#321](https://github.com/massCodeIO/massCode/issues/321)) ([9d264e0](https://github.com/massCodeIO/massCode/commit/9d264e0659f1e2b064eab1e93072c672b330ed15))
 
-
-
 ## [3.4.1](https://github.com/massCodeIO/massCode/compare/v3.4.0...v3.4.1) (2022-08-29)
-
 
 ### Bug Fixes
 
 * **grammars:** update xml & xsl [#263](https://github.com/massCodeIO/massCode/issues/263) ([#268](https://github.com/massCodeIO/massCode/issues/268)) ([fa79043](https://github.com/massCodeIO/massCode/commit/fa7904344f1261bcba5f2b711fd290d33275afc8))
 
-
-
 # [3.4.0](https://github.com/massCodeIO/massCode/compare/v3.3.0...v3.4.0) (2022-08-22)
-
 
 ### Bug Fixes
 
 * **editor:** editor height by resize window [#242](https://github.com/massCodeIO/massCode/issues/242) ([#253](https://github.com/massCodeIO/massCode/issues/253)) ([7865ff8](https://github.com/massCodeIO/massCode/commit/7865ff85023b5db0243d22f346dd6121ee639864))
 * **snippet:** set first fragment when creating a snippet ([#256](https://github.com/massCodeIO/massCode/issues/256)) ([d382625](https://github.com/massCodeIO/massCode/commit/d382625859a371e009be8def83839eb2791edf27))
 
-
 ### Features
 
 * **i18n:** add German locales ([#244](https://github.com/massCodeIO/massCode/issues/244)) ([d842b29](https://github.com/massCodeIO/massCode/commit/d842b291670fa77b63e8083e670152a667afa369))
 
-
-
 # [3.3.0](https://github.com/massCodeIO/massCode/compare/v3.2.0...v3.3.0) (2022-08-15)
-
 
 ### Bug Fixes
 
@@ -296,7 +244,6 @@
 * restore scroll to folder on init ([#234](https://github.com/massCodeIO/massCode/issues/234)) ([3fb66e4](https://github.com/massCodeIO/massCode/commit/3fb66e462d324130c0ce0c2dccb3945a86ad2a18))
 * **snippets:** use only markdown for presentation ([#232](https://github.com/massCodeIO/massCode/issues/232)) ([834327a](https://github.com/massCodeIO/massCode/commit/834327a20540847661346948974cda457bdcedeb))
 
-
 ### Features
 
 * add snippets selection history  ([#238](https://github.com/massCodeIO/massCode/issues/238)) ([a7540c9](https://github.com/massCodeIO/massCode/commit/a7540c91fd9a62aa4dd2f8253f30be1b70cd5bff))
@@ -305,10 +252,7 @@
 * **snippets:** add snippet link ([#230](https://github.com/massCodeIO/massCode/issues/230)) ([5a744f5](https://github.com/massCodeIO/massCode/commit/5a744f5d482c783b7ee1e2ba4cb94dbea8b667e9))
 * use escape to exit from markdown, code & screenshot previews ([#235](https://github.com/massCodeIO/massCode/issues/235)) ([12c6906](https://github.com/massCodeIO/massCode/commit/12c69060af04bbd4d29f2c9b9826022ca6d72572))
 
-
-
 # [3.2.0](https://github.com/massCodeIO/massCode/compare/v3.1.0...v3.2.0) (2022-08-11)
-
 
 ### Features
 
@@ -319,15 +263,11 @@
 * notarizing macOS builds ([#219](https://github.com/massCodeIO/massCode/issues/219)) ([0a9c214](https://github.com/massCodeIO/massCode/commit/0a9c214da6f680a5bfc1998f195fe12e6ba0d153))
 * **snippets:** add restore from trash ([#221](https://github.com/massCodeIO/massCode/issues/221)) ([0db6756](https://github.com/massCodeIO/massCode/commit/0db67561ee57ac98b17aace22fedb13db97ebedb))
 
-
-
 # [3.1.0](https://github.com/massCodeIO/massCode/compare/v3.0.0...v3.1.0) (2022-08-08)
-
 
 ### Bug Fixes
 
 * **editor:** clear search marks ([6a1bfc1](https://github.com/massCodeIO/massCode/commit/6a1bfc11b73403cc249c19555d5e4aae7d7f4936))
-
 
 ### Features
 
@@ -339,40 +279,29 @@
 * **themes:** add material palenight ([#195](https://github.com/massCodeIO/massCode/issues/195)) ([d644074](https://github.com/massCodeIO/massCode/commit/d644074dceb64ae798942c26d0487eb9cd17df01))
 * **themes:** add tokyo night ([#196](https://github.com/massCodeIO/massCode/issues/196)) ([f17aa89](https://github.com/massCodeIO/massCode/commit/f17aa8918b0da0a1bdc1c59f6545f8f0fd791e65))
 
-
-
 # [3.0.0](https://github.com/massCodeIO/massCode/compare/v2.11.0...v3.0.0) (2022-08-05)
-
 
 ### Features
 
 * add codemirror & use `.tmLanguage` directly as grammar ([#190](https://github.com/massCodeIO/massCode/issues/190)) ([a36bcf0](https://github.com/massCodeIO/massCode/commit/a36bcf005f4210a372b424ccc7e7c3fb84f7d634))
 
-
-
 # [2.11.0](https://github.com/massCodeIO/massCode/compare/v2.10.0...v2.11.0) (2022-08-04)
-
 
 ### Bug Fixes
 
 * **snippets:** folder rename [#162](https://github.com/massCodeIO/massCode/issues/162) ([#169](https://github.com/massCodeIO/massCode/issues/169)) ([c5ddd23](https://github.com/massCodeIO/massCode/commit/c5ddd231c6baecda6df572dda4406d50cc803575))
-
 
 ### Features
 
 * **i18n:** add Chinese traditional locale ([#161](https://github.com/massCodeIO/massCode/issues/161)) ([8b00fcd](https://github.com/massCodeIO/massCode/commit/8b00fcd58eca6c42402a747f23ac57ee8be28927))
 * **i18n:** add Spanish locale ([bd68311](https://github.com/massCodeIO/massCode/commit/bd6831123158a38166025a3683412a290ca74114))
 
-
-
 # [2.10.0](https://github.com/massCodeIO/massCode/compare/v2.9.0...v2.10.0) (2022-07-21)
-
 
 ### Bug Fixes
 
 * **editor:** fallback to monospace font [#149](https://github.com/massCodeIO/massCode/issues/149) ([3d9efcd](https://github.com/massCodeIO/massCode/commit/3d9efcdc6dd82d6ae598e160333c3fb116b87aa9))
 * **editor:** height when opening code preview ([#131](https://github.com/massCodeIO/massCode/issues/131)) ([c8d8443](https://github.com/massCodeIO/massCode/commit/c8d84432d71873a5b64c66c9f1afc4043031a20d))
-
 
 ### Features
 
@@ -381,19 +310,13 @@
 * **snippets:** add snippets showcase link ([e30a174](https://github.com/massCodeIO/massCode/commit/e30a17469bf7da14e3dfaac289fbc25254bd5432))
 * support i18n, add russian local ([#152](https://github.com/massCodeIO/massCode/issues/152)) ([59da3d9](https://github.com/massCodeIO/massCode/commit/59da3d95ee28f637fc3314cfc28cf940f7e3ee18))
 
-
-
 # [2.9.0](https://github.com/massCodeIO/massCode/compare/v2.8.1...v2.9.0) (2022-07-13)
-
 
 ### Features
 
 * **snippets:** add html & css renderer to snippets preview ([#126](https://github.com/massCodeIO/massCode/issues/126)) ([21828e6](https://github.com/massCodeIO/massCode/commit/21828e63a142c13953495e3d8693fe946deabe50))
 
-
-
 ## [2.8.1](https://github.com/massCodeIO/massCode/compare/v2.8.0...v2.8.1) (2022-07-09)
-
 
 ### Bug Fixes
 
@@ -403,25 +326,18 @@
 * **snippets:** double get snippets when add new snippet ([c38af77](https://github.com/massCodeIO/massCode/commit/c38af77500dd147aa3ff83bfa492464589f5b748))
 * **snippets:** search [#117](https://github.com/massCodeIO/massCode/issues/117) ([beb8591](https://github.com/massCodeIO/massCode/commit/beb8591003f45305a1f08455ff4e26e785135e27))
 
-
-
 # [2.8.0](https://github.com/massCodeIO/massCode/compare/v2.7.1...v2.8.0) (2022-07-08)
-
 
 ### Bug Fixes
 
 * **markdown:** proper bg color for code block depending on theme ([85eaa64](https://github.com/massCodeIO/massCode/commit/85eaa6475c7f167b26f83e04424781844caf85c7))
 * **snippets:** update editor if fragments is changed [#113](https://github.com/massCodeIO/massCode/issues/113) ([8908af9](https://github.com/massCodeIO/massCode/commit/8908af9906611d4cd604fe869840748a0bd6ce8a))
 
-
 ### Features
 
 * **snippets:** create screenshot of snippets ([#115](https://github.com/massCodeIO/massCode/issues/115)) ([024dfa5](https://github.com/massCodeIO/massCode/commit/024dfa5870d9e7dd36f533dcb06898e9bc50a641))
 
-
-
 ## [2.7.1](https://github.com/massCodeIO/massCode/compare/v2.7.0...v2.7.1) (2022-07-07)
-
 
 ### Bug Fixes
 
@@ -429,22 +345,17 @@
 * **markdown:** render task list ([#107](https://github.com/massCodeIO/massCode/issues/107)) ([4ee1970](https://github.com/massCodeIO/massCode/commit/4ee19704291e55ef66b5e617ed56afc7a732edd5))
 * **snippets:** await fetch snippets by click on system folders ([4f2a203](https://github.com/massCodeIO/massCode/commit/4f2a203611130713e20f64f1f4a6605d552f3dfe))
 
-
 ### Performance Improvements
 
 * **editor:** set value only if snippet id is changed ([#109](https://github.com/massCodeIO/massCode/issues/109)) ([56bd929](https://github.com/massCodeIO/massCode/commit/56bd9296deae1f37a0f467b596fc4b2be0d4021c))
 * **snippets:** no need to fetch snippets after patch ([3a51e69](https://github.com/massCodeIO/massCode/commit/3a51e695ac61e268cc499acd71f61ad48a57f28d))
 
-
-
 # [2.7.0](https://github.com/massCodeIO/massCode/compare/v2.6.1...v2.7.0) (2022-07-06)
-
 
 ### Bug Fixes
 
 * **snippets:** fragmetns scroll [#92](https://github.com/massCodeIO/massCode/issues/92) ([#105](https://github.com/massCodeIO/massCode/issues/105)) ([35e57dd](https://github.com/massCodeIO/massCode/commit/35e57dd233bbc518b7124084b1e64104ab9879ed))
 * **snippets:** update snippets list after add new ([#101](https://github.com/massCodeIO/massCode/issues/101)) ([55bb05d](https://github.com/massCodeIO/massCode/commit/55bb05dae55a559c8bd4519713eeab24fb690218))
-
 
 ### Features
 
@@ -452,19 +363,13 @@
 * **db:** add migration from SnippetsLab >= v2.1 ([#98](https://github.com/massCodeIO/massCode/issues/98)) ([542870d](https://github.com/massCodeIO/massCode/commit/542870d621673308549fdde1937f336029524830))
 * **main: menu:** add donate via PayPal ([86bf46a](https://github.com/massCodeIO/massCode/commit/86bf46af9ffcaaf64cfd964c145f555ccb40ee05))
 
-
-
 ## [2.6.1](https://github.com/massCodeIO/massCode/compare/v2.6.0...v2.6.1) (2022-05-06)
-
 
 ### Bug Fixes
 
 * **ui:** button spacing ([41ade18](https://github.com/massCodeIO/massCode/commit/41ade1819235ca1690450734807208279ef99ec8))
 
-
-
 # [2.6.0](https://github.com/massCodeIO/massCode/compare/v2.5.0...v2.6.0) (2022-05-06)
-
 
 ### Bug Fixes
 
@@ -473,41 +378,30 @@
 * **snippets:** multiple add to favorites ([1776679](https://github.com/massCodeIO/massCode/commit/1776679c78bc1b4fec892dbac736d64e6aed3e9e))
 * **snippets:** show placeholder for not selected snippet ([25b4494](https://github.com/massCodeIO/massCode/commit/25b449416e74f6c253fc701c08a62c7d4770afe7))
 
-
 ### Features
 
 * **snippets:** add description ([#74](https://github.com/massCodeIO/massCode/issues/74)) ([7e78922](https://github.com/massCodeIO/massCode/commit/7e78922a0536858111ffbe5ee34d9f3c156d6154))
 * **snippets:** add sort by `name`, `createdAt` & `updatedAt` ([#69](https://github.com/massCodeIO/massCode/issues/69)) ([3603fad](https://github.com/massCodeIO/massCode/commit/3603fad4691dd55c329c1ce11e9050abe96e1e4a))
 
-
-
 # [2.5.0](https://github.com/massCodeIO/massCode/compare/v2.4.0...v2.5.0) (2022-04-29)
-
 
 ### Bug Fixes
 
 * **main: menu:** add check for updates for other platforms ([94676b6](https://github.com/massCodeIO/massCode/commit/94676b65c1dca707fae18fc1119d79636d20b89a))
-
 
 ### Features
 
 * **main: menu:** add check for updates ([702d0f5](https://github.com/massCodeIO/massCode/commit/702d0f550306f57b2964c9588a579d6f3bbaf7c5))
 * **snippets:** more languages support for prettier ([#58](https://github.com/massCodeIO/massCode/issues/58)) ([658d3c0](https://github.com/massCodeIO/massCode/commit/658d3c0bf69a801e9f4ff3c6ebd7d1b3c1e91f02))
 
-
-
 # [2.4.0](https://github.com/massCodeIO/massCode/compare/v2.3.0...v2.4.0) (2022-04-27)
-
 
 ### Features
 
 * **api:** create snippets ([#56](https://github.com/massCodeIO/massCode/issues/56)) ([4abd6bd](https://github.com/massCodeIO/massCode/commit/4abd6bd53660c8b2750700139ba0fa4202532c35))
 * **main: menu:** add VS Code extension link ([98c4720](https://github.com/massCodeIO/massCode/commit/98c4720a3bf40fe3031808ccbf22717f4ac87d15))
 
-
-
 # [2.3.0](https://github.com/massCodeIO/massCode/compare/v2.2.0...v2.3.0) (2022-04-26)
-
 
 ### Bug Fixes
 
@@ -516,31 +410,23 @@
 * **main: db:** set empty `value` for content if `value` is `null` on migrate from v1 [#38](https://github.com/massCodeIO/massCode/issues/38) ([1874d1c](https://github.com/massCodeIO/massCode/commit/1874d1c3c925175a74f95527d6aafb3307b09ffe))
 * **snippets:** remove selected by click for system folder ([ebd9f29](https://github.com/massCodeIO/massCode/commit/ebd9f29ae31db0f5e03cec76e79a072c4b36b127))
 
-
 ### Features
 
 * **main: menu:** add raycast & alfred extensions links ([aab76b6](https://github.com/massCodeIO/massCode/commit/aab76b61ad7191a929e3c3861b1394811ad926da))
 * **snippets:** allow add snippets to inbox ([#52](https://github.com/massCodeIO/massCode/issues/52)) ([5cf809a](https://github.com/massCodeIO/massCode/commit/5cf809aea45e20d3cab9152dcb986652583413b6))
 
-
-
 # [2.2.0](https://github.com/massCodeIO/massCode/compare/v2.1.1...v2.2.0) (2022-04-19)
-
 
 ### Bug Fixes
 
 * **search:** set selected folder & snippet after focus on editor after search ([069e296](https://github.com/massCodeIO/massCode/commit/069e296f0aa3792990b8a25a1cfd314c853946fa))
 * **snippets:** persist scroll position by change view ([ba05384](https://github.com/massCodeIO/massCode/commit/ba05384c62eb39115bcc6c0fdd5d0f0a6a83b6c5))
 
-
 ### Features
 
 * **editor:** add `highlightGutter` & `highlightLine` settings ([#45](https://github.com/massCodeIO/massCode/issues/45)) ([52f8455](https://github.com/massCodeIO/massCode/commit/52f845575b641b1eeaa3a2a893b72f362908c744))
 
-
-
 ## [2.1.1](https://github.com/massCodeIO/massCode/compare/v2.1.0...v2.1.1) (2022-04-18)
-
 
 ### Bug Fixes
 
@@ -548,39 +434,28 @@
 * **sidebar:** tag highlight, spell fix tabs -> tags ([#33](https://github.com/massCodeIO/massCode/issues/33)) ([9be3e13](https://github.com/massCodeIO/massCode/commit/9be3e13b1fad2c8a5d027d36f743d7f1bc4afd86))
 * **snippets:** color text for ghost for multiple dragged snippets ([fc25202](https://github.com/massCodeIO/massCode/commit/fc25202059819f298e27e4506c0625756219c97d))
 
-
-
 # [2.1.0](https://github.com/massCodeIO/massCode/compare/v2.0.1...v2.1.0) (2022-04-15)
-
 
 ### Bug Fixes
 
 * **snippets:** disable markdown preview by select other fragment [#27](https://github.com/massCodeIO/massCode/issues/27) ([#31](https://github.com/massCodeIO/massCode/issues/31)) ([a7dfceb](https://github.com/massCodeIO/massCode/commit/a7dfcebd7d0721a7c28f412ced93d4bf8d4e6518))
 * unsubscribe on unmount for emiiter events [#29](https://github.com/massCodeIO/massCode/issues/29) ([#32](https://github.com/massCodeIO/massCode/issues/32)) ([d1d0bc5](https://github.com/massCodeIO/massCode/commit/d1d0bc583801d8655a1736310b4baef9e4f58372))
 
-
 ### Features
 
 * **main: db:** migrate from SnippetsLab ([#30](https://github.com/massCodeIO/massCode/issues/30)) ([1d48506](https://github.com/massCodeIO/massCode/commit/1d485067c5b6f476d92149905b437ae918a16963))
 
-
-
 ## [2.0.1](https://github.com/massCodeIO/massCode/compare/v2.0.0...v2.0.1) (2022-04-15)
-
 
 ### Bug Fixes
 
 * **snippets:** system folder highlight ([4cfe131](https://github.com/massCodeIO/massCode/commit/4cfe131bc79f55b28b1929905adfd86a7ada6086))
 
-
-
 # [2.0.0](https://github.com/massCodeIO/massCode/compare/v2.0.0-beta.6...v2.0.0) (2022-04-15)
-
 
 ### Bug Fixes
 
 * **snippets:** sort by `updatedAt` ([f5f50e6](https://github.com/massCodeIO/massCode/commit/f5f50e6a68d5b309fabe77f402b370a6d4d22d43))
-
 
 ### Features
 
@@ -588,10 +463,7 @@
 * **main: menu:** add find menu ([e42349e](https://github.com/massCodeIO/massCode/commit/e42349e25f6cfdbb9b74d3f7815a3e7eabd2b39a))
 * **snippets:** show time for today updated & full date for other snippets ([3724a5b](https://github.com/massCodeIO/massCode/commit/3724a5b459034bab90a3410c5e2d720394c33581))
 
-
-
 # [2.0.0-beta.6](https://github.com/massCodeIO/massCode/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2022-04-14)
-
 
 ### Features
 
@@ -599,16 +471,12 @@
 * **folders:** add rename context menu ([#25](https://github.com/massCodeIO/massCode/issues/25)) ([654767b](https://github.com/massCodeIO/massCode/commit/654767b98dbf25390af892ac3eb1ba93f7cefee0))
 * **snippets:** exit from edit mode by enter for fragment ([9e3e301](https://github.com/massCodeIO/massCode/commit/9e3e301006953bc81ac7fee9bb3c1920b1ec5d39))
 
-
-
 # [2.0.0-beta.5](https://github.com/massCodeIO/massCode/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2022-04-13)
-
 
 ### Bug Fixes
 
 * **snippets:** cut off snippets name for Windows [#20](https://github.com/massCodeIO/massCode/issues/20) ([#24](https://github.com/massCodeIO/massCode/issues/24)) ([097d2cb](https://github.com/massCodeIO/massCode/commit/097d2cbf688fdfc7404d1e7d9e479bb70dd42ed0))
 * **snippets:** open external link in markdown ([b5d3ee0](https://github.com/massCodeIO/massCode/commit/b5d3ee01cf7ad48dffb0255d10b652f98659867b))
-
 
 ### Features
 
@@ -616,45 +484,32 @@
 * resizable layout ([#19](https://github.com/massCodeIO/massCode/issues/19)) ([a1e41b3](https://github.com/massCodeIO/massCode/commit/a1e41b3ab567854eda7b9c636cb94c6e34614242))
 * update main menu ([#21](https://github.com/massCodeIO/massCode/issues/21)) ([6d14e7d](https://github.com/massCodeIO/massCode/commit/6d14e7df657f4762a8e43f207e909ee3eaed33cf))
 
-
-
 # [2.0.0-beta.4](https://github.com/massCodeIO/massCode/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2022-04-12)
-
 
 ### Bug Fixes
 
 * **editor:** undo/redo stack ([84096c4](https://github.com/massCodeIO/massCode/commit/84096c47bcf88b49229997d592f473f23812672e))
 * **snippets:** sort in 'All snippets' ([ab799d5](https://github.com/massCodeIO/massCode/commit/ab799d5df478bed659d56cb6529c1dd589355c0f))
 
-
 ### Features
 
 * add editor preferences ([#18](https://github.com/massCodeIO/massCode/issues/18)) ([d1fe23f](https://github.com/massCodeIO/massCode/commit/d1fe23fd510445426424bef85df2e3cf01c086e4))
 * **snippets:** add markdown preview ([#15](https://github.com/massCodeIO/massCode/issues/15)) ([c208871](https://github.com/massCodeIO/massCode/commit/c2088712ffbc38c2ce2593ec50dbaeaa6291bd7a))
 
-
-
 # [2.0.0-beta.3](https://github.com/massCodeIO/massCode/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2022-04-11)
-
 
 ### Bug Fixes
 
 * **main: db:** create app folder [#14](https://github.com/massCodeIO/massCode/issues/14) ([750637d](https://github.com/massCodeIO/massCode/commit/750637d068dae50dc10cc7308e9f5862754f0177))
 * **snippets:** scroll to top ([2dbecaf](https://github.com/massCodeIO/massCode/commit/2dbecaff987d9376e62fab0e98aa9194ef01d2d3))
 
-
-
 # [2.0.0-beta.2](https://github.com/massCodeIO/massCode/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2022-04-10)
-
 
 ### Features
 
 * support win ([#13](https://github.com/massCodeIO/massCode/issues/13)) ([edc114c](https://github.com/massCodeIO/massCode/commit/edc114cd4995913f039da0197c2560c5a99828f1))
 
-
-
 # [2.0.0-beta.1](https://github.com/massCodeIO/massCode/compare/9fd7085f113be898b9bde3a78eca1eff56c7a391...v2.0.0-beta.1) (2022-04-09)
-
 
 ### Bug Fixes
 
@@ -687,7 +542,6 @@
 * **snippets:** unset `selectedIds` by `setSnippetsByAlias` ([7d76a6c](https://github.com/massCodeIO/massCode/commit/7d76a6c3ede566f9d872914f29989dc2d2537ead))
 * **tags:** scroll ([b060225](https://github.com/massCodeIO/massCode/commit/b0602254a11e8e4df30948beeb0120dabfeb54bc))
 * **ui: tree:** disable `hoveredNodeId` if is dragged tree node ([6eab5e6](https://github.com/massCodeIO/massCode/commit/6eab5e67feea2f8abd8d9a8fc0e04a255d26bec2))
-
 
 ### Features
 
@@ -765,6 +619,3 @@
 * **ui:** add `contextMenuHandler` for AppTree ([f8ded2a](https://github.com/massCodeIO/massCode/commit/f8ded2a680418b50c747ac74e3ba775242786ca7))
 * update db table by API request, remove manual restart server ([cdbec6f](https://github.com/massCodeIO/massCode/commit/cdbec6f30719da5a4b712a1b2322083ed33814e2))
 * update init ([cb3507d](https://github.com/massCodeIO/massCode/commit/cb3507db680dfc0df3b02afd11cd02dac083a5fe))
-
-
-
