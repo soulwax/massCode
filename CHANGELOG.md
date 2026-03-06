@@ -1,3 +1,28 @@
+# [4.5.1](https://github.com/massCodeIO/massCode/compare/v4.5.0...v4.5.1) (2026-03-06)
+
+
+### Bug Fixes
+
+* **db:** fix `reloadDB` not re-registering `unicode_lower` function ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **db:** fix race condition in `reloadDB` by opening new connection before closing old ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **ipc:** fix `db:relaod` typo in IPC channel name ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **api:** add error handling for duplicate tag creation in tags route ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+
+
+### Security
+
+* **main:** set `nodeIntegration: false` and `contextIsolation: true` in BrowserWindow ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **main:** remove `webSecurity: false` from BrowserWindow preferences ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **main:** only suppress security warnings in development mode ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **preload:** remove unused raw SQL query passthrough from preload bridge ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **api:** restrict CORS origin to localhost and 127.0.0.1 only ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **ipc:** validate URL protocol in `shell.openExternal` (allow http/https only) ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **ipc:** add path traversal protection on all path-accepting IPC handlers ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **ipc:** validate `fileName` in asset upload handler against path traversal ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+* **utils:** add allowlist validation to `importEsm` dynamic module loader ([95ba6a0](https://github.com/massCodeIO/massCode/commit/95ba6a083a00f3d942faf0cbcf1282c2110ef3f6))
+
+
+
 # [4.4.0](https://github.com/massCodeIO/massCode/compare/v4.3.0...v4.4.0) (2025-12-19)
 
 
