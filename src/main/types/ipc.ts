@@ -24,7 +24,7 @@ type MainMenuAction =
   | 'toggle-sidebar'
 
 type DBAction =
-  | 'relaod'
+  | 'reload'
   | 'move'
   | 'migrate'
   | 'migrate-to-markdown'

@@ -18,7 +18,7 @@ export async function initApi() {
   const port = store.preferences.get('apiPort')
 
   app
-    .use(cors({ origin: '*' }))
+    .use(cors({ origin: /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/ }))
     .use(
       swagger({
         documentation: {

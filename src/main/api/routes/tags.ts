@@ -26,11 +26,21 @@ app
   // Добавление тега
   .post(
     '/',
-    ({ body }) => {
+    ({ body, status }) => {
       const storage = useStorage()
-      const { id } = storage.tags.createTag(body.name)
-
-      return { id }
+      try {
+        const { id } = storage.tags.createTag(body.name)
+        return { id }
+      }
+      catch (error) {
+        if (
+          error instanceof Error
+          && error.message.includes('UNIQUE constraint failed')
+        ) {
+          return status(409, { message: 'Tag already exists' })
+        }
+        return status(500, { message: 'Failed to create tag' })
+      }
     },
     {
       body: 'tagsAdd',
