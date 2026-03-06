@@ -1,4 +1,5 @@
 import type { Backup } from '../../db/types'
+import path from 'node:path'
 import { ipcMain } from 'electron'
 import { readFileSync } from 'fs-extra'
 import {
@@ -29,10 +30,22 @@ function assertSqliteEngine(action: string): void {
   }
 }
 
+function assertSafePath(inputPath: string): void {
+  const resolved = path.resolve(inputPath)
+
+  if (resolved !== inputPath && resolved !== path.normalize(inputPath)) {
+    const hasTraversal = inputPath.includes('..')
+    if (hasTraversal) {
+      throw new Error(`Path traversal detected: ${inputPath}`)
+    }
+  }
+}
+
 export function registerDBHandlers() {
-  ipcMain.handle<string, void>('db:relaod', (_, payload) => {
+  ipcMain.handle<string, void>('db:reload', (_, payload) => {
     return new Promise((resolve) => {
       assertSqliteEngine('Database reload')
+      assertSafePath(payload)
       store.preferences.set('storagePath', payload)
       reloadDB()
       resolve()
@@ -41,6 +54,7 @@ export function registerDBHandlers() {
 
   ipcMain.handle<string, void>('db:move', async (_, payload) => {
     assertSqliteEngine('Database move')
+    assertSafePath(payload)
     await moveDB(payload)
   })
 
@@ -54,6 +68,7 @@ export function registerDBHandlers() {
 
   ipcMain.handle<string, void>('db:migrate', async (_, payload) => {
     assertSqliteEngine('Migration from v3')
+    assertSafePath(payload)
     const jsonData = readFileSync(payload, 'utf8')
     await migrateJsonToSqlite(JSON.parse(jsonData))
   })
@@ -79,6 +94,7 @@ export function registerDBHandlers() {
 
   ipcMain.handle<string, void>('db:restore', async (_, payload) => {
     assertSqliteEngine('Backup restore')
+    assertSafePath(payload)
     await restoreFromBackup(payload)
   })
 
@@ -89,11 +105,13 @@ export function registerDBHandlers() {
 
   ipcMain.handle<string, void>('db:delete-backup', async (_, payload) => {
     assertSqliteEngine('Backup delete')
+    assertSafePath(payload)
     await deleteBackup(payload)
   })
 
   ipcMain.handle<string, void>('db:move-backup', async (_, payload) => {
     assertSqliteEngine('Backup move')
+    assertSafePath(payload)
     await moveBackupStorage(payload)
   })
 
